@@ -104,6 +104,8 @@ class VideoTrimmer2Plugin: FlutterPlugin, MethodCallHandler {
       }
       
       // Start muxing
+      val rotate = getVideoRotation(inputFile.path)
+      muxer.setOrientationHint(rotate) // or 90/180/270 if needed
       muxer.start()
       
       val bufferSize = 1024 * 1024 // 1MB buffer
@@ -155,4 +157,14 @@ class VideoTrimmer2Plugin: FlutterPlugin, MethodCallHandler {
       throw IOException("Failed to trim video: ${e.message}")
     }
   }
+
+  private fun getVideoRotation(path: String): Int {
+        val retriever = MediaMetadataRetriever()
+        retriever.setDataSource(path)
+
+        val rotation = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION)
+        retriever.release()
+
+        return rotation?.toIntOrNull() ?: 0
+    }
 }
