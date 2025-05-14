@@ -17,6 +17,7 @@ import java.io.IOException
 import java.nio.ByteBuffer
 import java.util.concurrent.Executors
 import java.util.UUID
+import android.media.MediaMetadataRetriever
 
 /** VideoTrimmer2Plugin */
 class VideoTrimmer2Plugin: FlutterPlugin, MethodCallHandler {
