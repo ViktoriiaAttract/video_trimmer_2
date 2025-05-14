@@ -29,7 +29,7 @@ android {
         namespace = "com.mokshchadha.video_trimmer_2"
     }
 
-    compileSdk = 34
+    compileSdk = 35
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -46,7 +46,7 @@ android {
     }
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 27
     }
 
     dependencies {
